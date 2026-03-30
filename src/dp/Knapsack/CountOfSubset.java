@@ -1,38 +1,49 @@
 package dp.Knapsack;
 
 public class CountOfSubset {
-    private static int[][] dp;
+    static int countSubsets(int[] arr, int n, int sum) {
+        if (sum == 0) return 1;
+        if (n == 0) return 0;
+        if (arr[n - 1] > sum) return countSubsets(arr, n - 1, sum);
+        return countSubsets(arr, n - 1, sum) + countSubsets(arr, n - 1, sum - arr[n - 1]);
+    }
 
-    static int getCountOfSubsetDp(int[] arr, int sum, int n){
-        for(int i=0; i<n+1; i++){
-            for(int j=0; j<sum+1; j++){
-                if(i==0) dp[i][j] = 0;
-                if(j==0) dp[i][j] = 1;
+    static int countSubsetsMemo(int[] arr, int n, int sum, Integer[][] dp) {
+        if (sum == 0) return 1;
+        if (n == 0) return 0;
+        if (dp[n][sum] != null) return dp[n][sum];
+        if (arr[n - 1] > sum)
+            return dp[n][sum] = countSubsetsMemo(arr, n - 1, sum, dp);
+        else
+            return dp[n][sum] = countSubsetsMemo(arr, n - 1, sum, dp) + countSubsetsMemo(arr, n - 1, sum - arr[n - 1], dp);
+    }
+
+    static int countSubsetsDP(int[] arr, int sum) {
+        int n = arr.length;
+        int[][] dp = new int[n + 1][sum + 1];
+        for (int i = 0; i <= n; i++) {
+            dp[i][0] = 1;
+        }
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= sum; j++) {
+                dp[i][j] = dp[i - 1][j];
+                if (arr[i - 1] <= j) {
+                    dp[i][j] += dp[i - 1][j - arr[i - 1]];
+                }
             }
         }
-
-//        if(arr[n-1]<=sum) --> return getCountOfSubsetDp(arr, sum-arr[n-1], n-1) || getCountOfSubsetDp(arr, sum, n-1)
-//        if(arr[n-1]>sum) --> return getCountOfSubsetDp(arr, sum, n-1)
-
-        for(int i=1; i<n+1; i++){
-            for(int j=1; j<sum+1; j++){
-                if(arr[i-1]<=j){
-                    dp[i][j] = dp[i-1][j-arr[i-1]] + dp[i-1][j];
-                }
-                else {
-                    dp[i][j] = dp[i-1][j];
-                }
-            }
-        }
-
         return dp[n][sum];
     }
 
     public static void main(String[] args) {
-        int[] arr = {2,3,5,6,8,10};
-        int sum = 8;
-        int n = arr.length;
-        dp = new int[n+1][sum+1];
-        System.out.println("Count of Subsets (DP): " + getCountOfSubsetDp(arr, sum, n));
+        int[] arr = {1, 2, 3, 3};
+        int sum = 6;
+        System.out.println(countSubsets(arr, arr.length, sum)); // Output: 3
+
+        Integer[][] t = new Integer[arr.length + 1][sum + 1];
+        System.out.println(countSubsetsMemo(arr, arr.length, sum, t));
+
+        System.out.println(countSubsetsDP(arr, sum));
     }
+
 }

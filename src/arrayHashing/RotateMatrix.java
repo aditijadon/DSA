@@ -1,4 +1,4 @@
-package array;
+package arrayHashing;
 
 public class RotateMatrix {
     /*             1   2   3   4            13   9   5   1

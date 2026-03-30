@@ -1,4 +1,4 @@
-package array;
+package arrayHashing;
 
 public class SetZeroMatrix {
     public static void setZeroesBruteForce(int[][] matrix) {  // (m*n)(m+n) + (m*n), space:

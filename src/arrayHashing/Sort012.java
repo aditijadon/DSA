@@ -1,4 +1,4 @@
-package array;
+package arrayHashing;
 
 import java.util.Arrays;
 
@@ -50,7 +50,7 @@ public class Sort012 {
     }
 
     public static void main(String[] args) {
-        int[] arr = {2,0,2,1,1,0};
+        int[] arr = {2,0,2,1,1,0};     //  0,0,2,1,1,2  -->  0,0,1,1,2,2
 //        sortBruteForce(arr);
         System.out.println(Arrays.toString(sort(arr)));
     }

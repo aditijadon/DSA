@@ -1,4 +1,4 @@
-package array;
+package arrayHashing;
 
 public class StockBuySell {
     static int maxProfitBruteForce(int[] prices) {   // O (n*n)
@@ -15,7 +15,7 @@ public class StockBuySell {
     static int maxProfit(int[] prices) {
         int n = prices.length;
         int minSoFar = prices[0];
-        int maxProfit = Integer.MIN_VALUE;
+        int maxProfit = 0;
         for(int i=0; i<n-1; i++){
             if (minSoFar > prices[i]) minSoFar = prices[i];
             else maxProfit = Math.max(maxProfit, prices[i] - minSoFar);

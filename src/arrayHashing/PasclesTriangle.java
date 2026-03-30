@@ -1,4 +1,4 @@
-package array;
+package arrayHashing;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,12 +13,12 @@ public class PasclesTriangle {
     * */
 
     public static long getElement(int row, int col) {  // For nCr = n! / r! (n-r)! never solve all the factorials
-        int n = row - 1;
-        int r = col - 1;
+        int n = row - 1; //5
+        int r = col - 1; //2
         long result = 1;
         for (int i = 0; i < r; i++) {
             result = result * (n - i);
-            result = result / (i + 1);
+            result = result / (i + 1);      // result * (n-i)/(i+1)
         }
         return result;
     }

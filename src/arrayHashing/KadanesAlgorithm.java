@@ -1,4 +1,4 @@
-package array;
+package arrayHashing;
 
 public class KadanesAlgorithm {
     static int maxSubArrayBruteForce(int[] nums){
