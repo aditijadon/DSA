@@ -1,5 +1,9 @@
 package dp.Knapsack;
 
+/*
+Count number of subsets with sum equal to given sum.
+*/
+
 public class CountOfSubset {
     static int countSubsets(int[] arr, int n, int sum) {
         if (sum == 0) return 1;

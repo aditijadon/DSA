@@ -1,0 +1,31 @@
+All 30 DP Problems :
+1. Knapsack 0-1 ✅
+2. Subset Sum ✅
+3. Equal Sum Partition ✅
+4. Count of Subset ✅
+5. Minimum Subset Sum Diff ✅
+6. Count of Subsets with Given Difference ✅
+7. Target Sum ✅
+8. Unbounded Knapsack (intro) ✅
+9. Rod Cutting Problem ✅
+10. Coin Change – I (Maximum number of ways)
+11. Coin Change – II (Minimum number of coins)
+12. Longest Common Subsequence (LCS)
+13. Longest Common Substring
+14. Print LCS
+15. Shortest Common Supersequence (SCS)
+16. Minimum insertions & deletions to convert string A to B
+17. Longest Palindromic Subsequence (LPS)
+18. Minimum deletions to make string palindrome
+19. Print SCS
+20. Longest Repeating Subsequence
+21. Sequence Pattern Matching
+22. Minimum insertions to make string palindrome
+23. Matrix Chain Multiplication (MCM)
+24. Palindrome Partitioning
+25. Evaluate Expression to True / Boolean Parenthesization
+26. Scramble String
+27. Egg Dropping Problem
+28. DP on Trees – Diameter of Binary Tree
+29. DP on Trees – Maximum Path Sum (any node to any node)
+30. DP on Trees – Maximum Path Sum (leaf to leaf)

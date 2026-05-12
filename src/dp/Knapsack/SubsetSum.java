@@ -1,5 +1,9 @@
 package dp.Knapsack;
 
+/*
+Given an array and target sum, check if there is a subset with sum equal to target.
+*/
+
 public class SubsetSum {
     static boolean isSubsetSumRecursion(int[] arr, int n, int sum) {
         if (sum == 0) return true;
@@ -30,6 +34,17 @@ public class SubsetSum {
         return dp[n][sum];
     }
 
+    static boolean isSubsetSumSpaceOptimised(int[] arr, int sum) {
+        boolean[] dp = new boolean[sum + 1];
+        dp[0] = true;
+        for (int num : arr) {
+            for (int j = sum; j >= num; j--) {
+                dp[j] = dp[j] || dp[j - num];
+            }
+        }
+        return dp[sum];
+    }
+
     public static void main(String[] args) {
         int arr[] = {3, 34, 4, 12, 5, 2};
         int target = 9;
@@ -40,5 +55,7 @@ public class SubsetSum {
         System.out.println(isSubsetSumMemo(arr, n, target, t));
 
         System.out.println(isSubsetSumDP(arr, target, n));
+
+        System.out.println(isSubsetSumSpaceOptimised(arr, target));
     }
 }

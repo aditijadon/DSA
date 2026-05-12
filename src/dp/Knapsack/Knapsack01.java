@@ -2,19 +2,27 @@ package dp.Knapsack;
 
 import java.util.Arrays;
 
+/*
+Given N items with values val[] and weights wt[], and knapsack capacity W. Find the maximum value you can achieve
+without exceeding W (each item can be taken at most once).
+*/
+
 public class Knapsack01 {
     static int knapSackRecursion(int W, int[] wt, int[] val, int n) {
         if (n == 0 || W == 0) return 0;
         if (wt[n-1] > W) return knapSackRecursion(W, wt, val, n-1);
-        else return Math.max(val[n-1] + knapSackRecursion(W - wt[n-1], wt, val, n-1),
-                    knapSackRecursion(W, wt, val, n-1));
+        else return Math.max(
+                val[n-1] + knapSackRecursion(W - wt[n-1], wt, val, n-1),
+                knapSackRecursion(W, wt, val, n-1));
     }
 
     static int knapSackMemo(int W, int[] wt, int[] val, int n, int[][] t) {
         if (n == 0 || W == 0) return 0;
         if (t[n][W] != -1) return t[n][W];
         if (wt[n-1] > W) return t[n][W] = knapSackMemo(W, wt, val, n-1, t);
-        else return t[n][W] = Math.max(val[n-1] + knapSackMemo(W - wt[n-1], wt, val, n-1, t), knapSackMemo(W, wt, val, n-1, t));
+        else return t[n][W] = Math.max(
+                val[n-1] + knapSackMemo(W - wt[n-1], wt, val, n-1, t),
+                knapSackMemo(W, wt, val, n-1, t));
     }
 
     static int knapSackDP(int W, int[] wt, int[] val, int n) {

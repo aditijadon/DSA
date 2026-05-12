@@ -3,13 +3,18 @@ package dp.UnboundedKnapsack;
 public class UnboundedKnapsack {
     private static int[][] dp;
 
+    static int knapSackRecursion(int W, int[] wt, int[] val, int n) {
+        if (n == 0 || W == 0) return 0;
+        if (wt[n-1] > W) return knapSackRecursion(W, wt, val, n-1);
+        else return Math.max(
+                val[n-1] + knapSackRecursion(W - wt[n-1], wt, val, n),
+                knapSackRecursion(W, wt, val, n-1));
+    }
+
     public static int maxProfitDP(int[] wt, int[] val, int W, int n){
-        //initialisation replacing the base condition
         for(int i=0; i<n+1; i++){
             for(int j=0; j<W+1; j++){
-                if(i==0 || j==0){
-                    dp[i][j] = 0;
-                }
+                if(i==0 || j==0) dp[i][j] = 0; // BASE CONDITION
             }
         }
 

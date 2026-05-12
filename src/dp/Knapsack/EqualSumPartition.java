@@ -1,12 +1,15 @@
 package dp.Knapsack;
 
+/*
+Partition the array into two subsets with equal sum (i.e., total sum even + subset sum = total/2).
+*/
+
 public class EqualSumPartition {
     static boolean isEqualSumRecursion(int[] arr, int n, int target) {
         if (target == 0) return true;
         if (n == 0) return false;
         if (arr[n - 1] > target) return isEqualSumRecursion(arr, n - 1, target);
-        return isEqualSumRecursion(arr, n - 1, target) ||
-                isEqualSumRecursion(arr, n - 1, target - arr[n - 1]);
+        return isEqualSumRecursion(arr, n - 1, target) || isEqualSumRecursion(arr, n - 1, target - arr[n - 1]);
     }
 
     static boolean canPartitionRecursion(int[] arr) {
@@ -29,8 +32,7 @@ public class EqualSumPartition {
         if (arr[n - 1] > target) {
             result = isEqualSumMemo(arr, n - 1, target, t);
         } else {
-            result = isEqualSumMemo(arr, n - 1, target, t) ||
-                    isEqualSumMemo(arr, n - 1, target - arr[n - 1], t);
+            result = isEqualSumMemo(arr, n - 1, target, t) || isEqualSumMemo(arr, n - 1, target - arr[n - 1], t);
         }
         t[n][target] = result;
         return result;
